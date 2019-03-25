@@ -9,8 +9,10 @@ public abstract class Core {
 			// new DisplayMode(1280,1024,32,0),
 			new DisplayMode(800, 600, 32, 0), new DisplayMode(800, 600, 24, 0), new DisplayMode(800, 600, 16, 0),
 			new DisplayMode(640, 480, 32, 0), new DisplayMode(640, 480, 24, 0), new DisplayMode(640, 480, 16, 0), };
+
 	private boolean running;
-	protected ScreenManager sm;
+
+	protected ScreenManager screenManager;
 
 	public void stop() {
 
@@ -23,16 +25,16 @@ public abstract class Core {
 			init();
 			gameLoop();
 		} finally {
-			sm.restoreScreen();
+			screenManager.restoreScreen();
 		}
 	}
 
 	public void init() {
 
-		sm = new ScreenManager();
-		DisplayMode dm = sm.findFirstCompatibaleMode(modes);
-		sm.setFullScreen(dm);
-		Window w = sm.getFullScreenWindow();
+		screenManager = new ScreenManager();
+		DisplayMode dm = screenManager.findFirstCompatibaleMode(modes);
+		screenManager.setFullScreen(dm);
+		Window w = screenManager.getFullScreenWindow();
 		w.setFont(new Font("Arial", Font.PLAIN, 20));
 		w.setBackground(Color.WHITE);
 		w.setForeground(Color.RED);
@@ -50,10 +52,10 @@ public abstract class Core {
 			long timePassed = System.currentTimeMillis() - cumTime;
 			cumTime += timePassed;
 			update(timePassed);
-			Graphics2D g = sm.getGraphics();
+			Graphics2D g = screenManager.getGraphics();
 			draw(g);
 			g.dispose();
-			sm.update();
+			screenManager.update();
 
 			try {
 				Thread.sleep(20);

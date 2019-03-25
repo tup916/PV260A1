@@ -3,3 +3,11 @@
 /Core.class
 /ScreenManager.class
 /yourclass.class
+/Main.class
+/KeyListenerHandler.class
+/Player.class
+/Direction.class
+/Coordinates.class
+/MouseListenerHandler.class
+/MouseMotionListenerHandler.class
+/Keys.class
