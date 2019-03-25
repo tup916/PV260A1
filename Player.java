@@ -8,7 +8,7 @@ public class Player {
 	private int centreX;
 	private int centreY;
 	private Direction currentDirection;
-	
+
 	private Keys keys;
 
 	private final Color color;
@@ -68,13 +68,14 @@ public class Player {
 
 		return color;
 	}
-	
+
 	public Coordinates getCoordinateAt(int index) {
+
 		return this.path.get(index);
 	}
-	
+
 	public Keys getKeys() {
-	
+
 		return keys;
 	}
 
@@ -100,8 +101,28 @@ public class Player {
 		else if (!color.equals(other.color)) return false;
 		return true;
 	}
-	
-	
+
+	public boolean isInCollisionWith(Player playerB) {
+		if (!this.equals(playerB)) {
+			for (int i = 0; i < this.getPath().size(); i++) {
+				Coordinates coordA  = this.getCoordinateAt(i);
+				Coordinates coordB = playerB.getCoordinateAt(i);
+				if ( isColliding(playerB, coordA, coordB)) {
+						return true;
+					}
+			}
+		}
+		
+		return false;
+	}
+
+	private boolean isColliding(Player playerB, Coordinates coordA, Coordinates coordB) {
+
+		return ((this.getCentreX() == coordA.getX()) && (this.getCentreY() == coordA.getY()))
+			|| ((playerB.getCentreX() == coordB.getX()) && (playerB.getCentreY() == coordB.getY()))
+			|| ((this.getCentreX() == coordB.getX()) && (this.getCentreY() == coordB.getY()))
+			|| ((playerB.getCentreX() == coordA.getX()) && (playerB.getCentreY() == coordA.getY()));
+	}
 
 	/**
 	 * private static int centrex1 = 40; private static int centrey1 = 40; private
