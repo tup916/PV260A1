@@ -1,4 +1,4 @@
-package src;
+package Model;
 
 public class Keys {
 
@@ -19,7 +19,7 @@ public class Keys {
 
 		return up;
 	}
-	
+
 	public int getDown() {
 
 		return down;

@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 
+import Model.Player;
+
 public class KeyListenerHandler implements KeyListener {
 
 	private List<Player> players;

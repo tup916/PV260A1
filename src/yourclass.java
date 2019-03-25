@@ -6,6 +6,10 @@ import java.awt.Window;
 import java.util.LinkedList;
 import java.util.List;
 
+import Model.Coordinates;
+import Model.Keys;
+import Model.Player;
+
 import java.awt.event.KeyEvent;
 
 public class yourclass extends Core {
@@ -36,8 +40,6 @@ public class yourclass extends Core {
 
 	public void draw(Graphics2D g) {
 
-		updatePathAndPositions();
-
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, screenManager.getWidth(), screenManager.getHeight());
 
@@ -49,7 +51,7 @@ public class yourclass extends Core {
 		}
 	}
 
-	private void updatePathAndPositions() {
+	public void updatePathAndPositions() {
 
 		for (Player player : players) {
 			switch (player.getCurrentDirection()) {

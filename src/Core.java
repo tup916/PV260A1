@@ -55,6 +55,7 @@ public abstract class Core {
 			cumTime += timePassed;
 			update(timePassed);
 			Graphics2D g = screenManager.getGraphics();
+			updatePathAndPositions();
 			draw(g);
 			g.dispose();
 			screenManager.update();
@@ -69,6 +70,8 @@ public abstract class Core {
 	public void update(long timePassed) {
 
 	}
+	
+	public abstract void updatePathAndPositions();
 
 	public abstract void draw(Graphics2D g);
 
